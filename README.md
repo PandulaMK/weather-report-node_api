@@ -1,6 +1,6 @@
 # 🌦️ Weather API Project
 
-This is a Node.js REST API that allows users to register with their email and location, fetch current weather data for that location using the OpenWeatherMap API, and store weather history in MongoDB. Email functionality and scheduled weather checks are also supported.
+This is a Node.js API that allows users to register with their email and location, fetch current weather data for that location using the OpenWeatherMap API, and store weather history in MongoDB. Email functionality and scheduled weather checks are also supported.
 
 ---
 
