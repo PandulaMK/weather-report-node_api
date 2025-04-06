@@ -24,8 +24,25 @@ router.post('/users', [
     if (existingUser) {
       return res.status(400).json({ message: 'User with this email already exists' });
     }
-    const newUser = new User({ email, location });
+    const weather = await fetchWeather(location);
+    const newUser = new User({
+      email,
+      location,
+      weatherData: [{
+        data: weather,
+        timestamp: new Date()
+      }]
+    });
     await newUser.save();
+
+    //test
+    const weatherData = await fetchWeather(location);
+newUser.weatherData.push({
+  data: weatherData,
+  timestamp: new Date()
+});
+await newUser.save();
+
     res.status(201).json(newUser);
   } catch (error) {
     console.error(error);
