@@ -1,5 +1,16 @@
 const mongoose = require('mongoose');
 
+const weatherEntrySchema = new mongoose.Schema({
+  data: {
+    temperature: Number,
+    description: String,
+  },
+  timestamp: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
 const userSchema = new mongoose.Schema({
   email: {
     type: String,
@@ -12,14 +23,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  weatherData: [{
-    date: {
-      type: Date,
-      default: Date.now,
-    },
-    temperature: Number,
-    description: String,
-  }]
+  weatherData: [weatherEntrySchema],
 });
 
 module.exports = mongoose.model('User', userSchema);
